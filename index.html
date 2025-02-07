@@ -1,22 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    hi
-
-    <mini-cart></mini-cart>
-
-  
-    
-</body>
-    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
-    <script src="newcrud.js"></script>
-    <script src="fireConfig.js"></script>
-    <script src="crud.js"></script>
-</body>
-</html>
+　　<html lang="en">
+　　<head>
+　　<meta charset="UTF-8">
+　　<meta name="viewport" content="width=device-width, initial-scale=1.0">
+　　<title>SIP Calculator with Inflation Adjustment</title>
+　　<style>
+　　body {
+　　font-family: Arial, sans-serif;
+　　background: #f4f4f4;
+　　text-align: center;
+　　padding: 20px;
+　　}
+　　.container {
+　　max-width: 400px;
+　　margin: 0 auto;
+background: white;
+　　padding: 20px;
+　　border-radius: 10px;
+　　box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+　　}
+　　h1 {
+　　font-size: 20px;
+　　color: #333;
+　　}
+　　label {
+　　display: block;
+　　margin-top: 10px;
+　　font-weight: bold;
+　　}
+　　input {
+　　width: 100%;
+　　padding: 8px;
+　　margin-top: 5px;
+　　border: 1px solid #ccc;border-radius: 5px;
+　　}
+　　button {
+　　margin-top: 20px;
+　　width: 100%;
+　　padding: 10px;
+　　background: #28a745;
+　　color: white;
+　　border: none;
+　　font-size: 16px;
+　　border-radius: 5px;
+　　cursor: pointer;
+　　}
+　　button:hover {
+　　background: #218838;
+　　}
+　　.result {
+　　margin-top: 20px;
+　　font-size: 18px;
+　　color: #444;}
+　　</style>
+　　</head>
+　　<body>
+　　<div class="container">
+　　<h1>SIP Calculator with Inflation Adjustment</h1>
+　　<label for="monthlyInvestment">Monthly Investment (₹):</label>
+　　<input type="number" id="monthlyInvestment" placeholder="Enter amount" required>
+　　<label for="rateOfReturn">Expected Annual Return (%):</label>
+　　<input type="number" id="rateOfReturn" placeholder="Enter rate" required>
+<labelfor="inflationRate">Inflation Rate (%):</label>
+　　<input type="number" id="inflationRate" placeholder="Enter inflation rate" required>
+　　<label for="timePeriod">Investment Period (years):</label>
+　　<input type="number" id="timePeriod" placeholder="Enter years" required>
+　　<button onclick="calculateSIP()">Calculate</button>
+　　<div class="result">
+　　<h2>Results:</h2>
+　　<p><strong>Future Value (without Inflation):</strong> ₹<span id="futureValue">0</span></p>　<p><strong>Adjusted Value (with Inflation):</strong> ₹<span id="adjustedValue">0</span></p>
+　　</div>
+　　</div>
+　　<script>
+　　function calculateSIP() {
+　　let monthlyInvestment = parseFloat(document.getElementById('monthlyInvestment').value);
+　　let rateOfReturn = parseFloat(document.getElementById('rateOfReturn').value) / 100;
+　　let inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
+　　let timePeriod =parseInt(document.getElementById('timePeriod').value);
+　　if (isNaN(monthlyInvestment) || isNaN(rateOfReturn) || isNaN(inflationRate) || isNaN(timePeriod) || timePeriod <= 0) {
+　　alert("Please enter valid values");
+　　return;
+　　}
+　　let months = timePeriod * 12;
+　　let monthlyRate = rateOfReturn / 12;
+　　// Future Value (without inflation)
+　　let futureValue = monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *(1 + monthlyRate);
+　　// Adjusted Future Value considering Inflation
+　　let adjustedValue = futureValue / Math.pow(1 + inflationRate, timePeriod);
+　　document.getElementById('futureValue').innerText = futureValue.toFixed(2);
+　　document.getElementById('adjustedValue').innerText = adjustedValue.toFixed(2);
+　　}
+　　</script>
+　　</body>
+　　</html>
