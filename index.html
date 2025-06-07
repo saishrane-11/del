@@ -93,3 +93,562 @@ background: white;
 　　</script>
 　　</body>
 　　</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Permanent+Marker&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Quicksand", sans-serif;
+            
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-image: url('assets/quantum screen assets/header pattern svg.svg');
+            background-size: cover;
+            background-color: #222E3B;
+            color: white;
+            display: flex;
+            align-items: center;
+
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            width: 68%;
+            justify-content: space-around;
+        }
+
+        .nav-links a {
+            color: #3FD28B;
+            text-decoration: none;
+            font-weight: 500;
+            /* font-size: large; */
+            text-transform: uppercase;
+        }
+
+
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background-image: url('assets/quantum screen assets/icons/hamburger-menu.svg');
+            background-repeat: no-repeat;
+            width: 22px;
+            height: 20px;
+        }
+
+        .main {
+            background-color: #EEEEEE;
+            flex: 1;
+            padding: 100px 20px 20px;
+            /* top padding to push content below fixed header */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            flex: 1 1 30%;
+            min-width: 250px;
+            display: grid;
+            gap: 2px;
+            grid-template-columns: 0.8fr 2fr;
+            grid-template-rows: repeat(6, 1fr);
+
+        }
+
+        .item1 {
+            grid-row: 1/-2;
+        }
+
+        .item2 {
+            grid-row: 1/-2;
+        }
+
+        .item3 {
+            grid-column: 1/-1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .nav-icons {
+            display: flex;
+            /* background-color: green; */
+            width: 64%;
+            justify-content: space-around;
+
+        }
+
+        .logo {
+            background-image: url('assets/quantum screen assets/icons/logo used in header.svg');
+            height: 40px;
+            width: 135px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        header>div:nth-child(1) {
+            margin-right: auto;
+        }
+
+        .alert-icon {
+            background-image: url('assets/quantum screen assets/icons/alerts.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        .announcements-icon {
+            background-image: url('assets/quantum screen assets/icons/announcements.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .profile-icon {
+            background-image: url('assets/quantum screen assets/icons/account_circle.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .icons {
+
+            display: flex;
+            width: 32%;
+            justify-content: space-evenly;
+        }
+
+        a:focus-within .line {
+            color: white;
+            display: block;
+
+        }
+
+        a:focus-within {
+            color: white;
+        }
+
+
+        .line {
+            display: none;
+            width: 100%;
+            top: 23px;
+            position: relative;
+            background-color: white;
+            height: 4px;
+        }
+
+        .icons>div {
+            height: 24px;
+            width: 24px;
+        }
+
+
+        .main-section {
+            width: 100%;
+            height: 64px;
+            display: flex;
+            background-color: #8DDC97;
+            color: #222222;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section a {
+            padding-top: 10px;
+            width: 104px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            height: 82px;
+            color: #222222;
+            font-size: 20px;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+        }
+
+        /* .section:focus-within a {
+            color: white;
+            text-decoration: underline;
+        } */
+        .section:focus-within .section-line {
+            color: white;
+            height: 4px;
+            width: 100%;
+            background-color: black;
+
+        }
+
+        .default-selected-line {
+            color: white;
+            display: block;
+        }
+
+        .default-selected-text {
+            color: white;
+        }
+
+        .default-selected-section {
+
+            height: 4px;
+            width: 100%;
+            background-color: black;
+        }
+
+        .section-left {
+            background-color: #8DDC97;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-right {
+            background-color: #8DDC97;
+            display: flex;
+            flex-direction: column;
+        }
+
+        span {
+            font-weight: 600;
+            bottom: 3px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .main-section-2 {
+            width: 100%;
+            height: 34px;
+            /* background-color: green; */
+            border-bottom: 1px solid #686868;
+            font-size: xx-small;
+            color: #686868;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+
+
+
+        .main-section-2 .container {
+            height: 100%;
+            width: 28%;
+            /* background-color: green; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .main-section-2 .left-div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            width: 88%;
+        }
+
+        .main-section-2 .left-div label {
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .main-section-2 .custom-select {
+            position: relative;
+            width: 78%;
+            height: 16px;
+            border-bottom: 1px solid #afa4a4;
+        }
+
+        .main-section-2 .custom-select select {
+            border: none;
+            /* border-bottom: 1px solid #; */
+            cursor: pointer;
+            background: transparent;
+            width: 100%;
+
+            /* space for the image */
+            font-size: 12px;
+            font-weight: 600;
+            appearance: none;
+            /* remove default arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            background-image: none;
+        }
+
+        .main-section-2 .custom-select select:focus {
+            outline: none;
+        }
+
+        .main-section-2 .custom-select::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url('assets/quantum screen assets/icons/arrow-down.svg');
+            /* your dropdown image */
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            /* let clicks pass through */
+        }
+
+        .main-section-2 .right-div img {
+            max-width: 10px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .main-section-3 {
+            /* background-color: green; */
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .icons {
+                width: 60%;
+            }
+
+            .main-section-2 .container {
+                width: 45%;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 60px;
+                background-color: #007bff;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .nav-icons {
+                display: flex;
+                /* background-color: green; */
+                width: 64%;
+                justify-content: flex-end;
+            }
+
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .card>div {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo"></div>
+
+
+        <div class="nav-icons">
+            <div class="nav-links" id="navLinks">
+                <a href="#" style="color: white;">Dashboard
+                    <div class="line default-selected-line"></div>
+                </a>
+
+                <a href="#">Content <div class="line"></div></a>
+                <a href="#">Users <div class="line"></div></a>
+                <a href="#">Report <div class="line"></div></a>
+                <a href="#">Admin <div class="line"></div></a>
+
+            </div>
+            <div class="icons">
+                <div class="alert-icon"></div>
+                <div class="announcements-icon"></div>
+                <div class="profile-icon"></div>
+            </div>
+        </div>
+
+
+        <div class="hamburger" onclick="toggleMenu()"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="main-section">
+            <div class="section section-left ">
+
+                <a href="#left" tabindex="1">
+                    <img src="./assets/quantum screen assets/icons/courses.svg" alt="" srcset=""> <b>4</b>
+                    <span>Courses</span></a>
+                <div class="section-line default-selected-section"></div>
+            </div>
+            <div class="section section-right">
+                <a href="#right" tabindex="2">
+                    <img src="./assets/quantum screen assets/icons/classes.svg" alt="" srcset="">
+                    <b>4</b> <span>
+                        Classes
+                    </span> </a>
+                <div class="section-line"></div>
+            </div>
+        </div>
+        <div class="main-section-2">
+            <div>
+                Showing 4 of 4 courses
+            </div>
+
+            <div class="container">
+                <div class="left-div">
+                    <label for="sort">Sort By:</label>
+                    <div class="custom-select">
+                        <select id="sort">
+                            <option value="latest">Course Name</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="oldest">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="right-div">
+                    <img src="assets/quantum screen assets/icons/sort.svg" alt="Random Image">
+                </div>
+            </div>
+        </div>
+        <div class="main-section-3">
+            <div class="card">
+                <div class="item1">
+                    1
+                </div>
+                <div class="item2">
+                    2
+                </div>
+                <div class="item3">
+                    3
+                </div>
+            </div>
+            <div class="card">
+                <div class="item1">
+                    1
+                </div>
+                <div class="item2">
+                    2
+                </div>
+                <div class="item3">
+                    3
+                </div>
+            </div>
+            <div class="card">
+                <div class="item1">
+                    1
+                </div>
+                <div class="item2">
+                    2
+                </div>
+                <div class="item3">
+                    3
+                </div>
+            </div>
+            <div class="card">
+                <div class="item1">
+                    1
+                </div>
+                <div class="item2">
+                    2
+                </div>
+                <div class="item3">
+                    3
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 MyWebsite. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+  
